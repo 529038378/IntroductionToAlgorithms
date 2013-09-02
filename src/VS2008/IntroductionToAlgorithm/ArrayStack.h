@@ -4,7 +4,7 @@
 #include "common.h"
 #include "AbstractBase.h"
 #include "DataIO.h"
-#include "DataIO.cpp"
+
 
 template <typename T>
 class ArrayStack : public AbstractBase

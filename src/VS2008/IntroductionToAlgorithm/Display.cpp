@@ -54,11 +54,13 @@ void Display::Welcome()
 void Display::ShowDataStructItems()
 {
 	ArrayStack<int> dsArrayStack;
+	ListStack<int>	lsListStack;
 Begin:
 	cout<<WELCOME_STRING<<endl;
 	cout<<"This is the Implement of Data Structs"<<endl;
 	cout<<"Please Select the Item you are Interest in:"<<endl;
 	cout<<"1.	Stack(Implement of Array);"<<endl;
+	cout<<"2.	Stack(Implement of List);"<<endl;
 	cout<<"98.	Up Layer;"<<endl;
 	cout<<"99.	Quit."<<endl;
 	cout<<STAR_STRING<<endl;
@@ -82,6 +84,12 @@ Begin:
 			cout<<dsArrayStack.GetTitle().c_str()<<endl;
 			dsArrayStack.Description();
 			dsArrayStack.Test();
+			goto Begin;
+			break;
+		case 2:
+			cout<<lsListStack.GetTitle().c_str()<<endl;
+			lsListStack.Description();
+			lsListStack.Test();
 			goto Begin;
 			break;
 		case 98:

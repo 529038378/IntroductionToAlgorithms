@@ -4,6 +4,8 @@
 #include "common.h"
 #include "ArrayStack.h"
 #include "ArrayStack.cpp"
+#include "ListStack.h"
+#include "ListStack.cpp"
 
 class Display
 {

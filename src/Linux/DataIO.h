@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _DATAIO_H
 #define _DATAIO_H
 #include "common.h"

@@ -29,6 +29,7 @@ public:
 	}
 	virtual ~AbstractBase(){};
 	virtual void Description(void) const = 0;
+	virtual void Test() = 0;
 private:
 	CLASS_TYPE m_ctType;
 	string m_strTitle;

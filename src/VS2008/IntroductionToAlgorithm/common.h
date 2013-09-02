@@ -7,6 +7,7 @@
 #include <fstream>
 using namespace std;
 
+
 enum CLASS_TYPE {OTHER = -1,DATA_STRUCT,ALGORITHM,PRACTICAL_ISSUE,INTERVIEW_ISSUE};
 
 #define DEFAULT_STACK_SIZE	10
@@ -25,5 +26,7 @@ enum CLASS_TYPE {OTHER = -1,DATA_STRUCT,ALGORITHM,PRACTICAL_ISSUE,INTERVIEW_ISSU
 	cerr<<ERROR_REPORT_STRING<<endl;	\
 	cerr<<"Error Message:	"<<fmt<<endl<<"In File->"<<__FILE__<<endl<<"Line->"<<__LINE__<<endl<<"Function->"<<__FUNCTION__<<endl; \
 	cerr<<ERROR_REPORT_END_STRING<<endl<<endl
+
+
 
 #endif

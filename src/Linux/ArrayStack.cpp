@@ -116,16 +116,20 @@ void ArrayStack<T>::Test()
 	DataIO<T> dataIO;
 	cout<<endl<<TEST_BEGIN_STRING<<endl;
 	cout<<"Let's See The Test of ArrayStack"<<endl;
-	int * pData = (int*)dataIO.GetDataFromStdIO(1);
-	unsigned int nDataByte = dataIO.GetDataByte();
-	for(unsigned int i=0;i<nDataByte;i++)
+	T* pData = dataIO.GetDataFromStdIO(1);
+	if(pData != NULL)
 	{
-		Push(pData[i]);
-	}
-	for(unsigned int i=0;i<nDataByte;i++)
-	{
+		unsigned int nDataByte = dataIO.GetDataByte();
+		for(unsigned int i=0;i<nDataByte;i++)
+		{
+			Push(pData[i]);
+		}
+		Top();
+		for(unsigned int i=0;i<nDataByte;i++)
+		{
+			Pop();
+		}
 		Pop();
+		cout<<TEST_END_STRING<<endl<<endl;
 	}
-	Pop();
-	cout<<TEST_END_STRING<<endl<<endl;
 }
