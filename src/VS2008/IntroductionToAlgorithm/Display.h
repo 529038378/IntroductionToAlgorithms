@@ -6,6 +6,8 @@
 #include "ArrayStack.cpp"
 #include "ListStack.h"
 #include "ListStack.cpp"
+#include "ArrayQueue.h"
+#include "ArrayQueue.cpp"
 
 class Display
 {

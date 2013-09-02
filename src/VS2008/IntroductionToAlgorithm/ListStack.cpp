@@ -36,7 +36,7 @@ ListStack<T>::~ListStack()
 }
 
 template <typename T>
-void ListStack<T>::Push(const T nData)
+bool ListStack<T>::Push(const T nData)
 {
 	ListNode<T> *pNewNode = new ListNode<T>[1];
 	pNewNode->nData = nData;
@@ -44,7 +44,7 @@ void ListStack<T>::Push(const T nData)
 	m_pHead->pNext = pNewNode;
 	m_pTop = pNewNode;
 	++m_nSize;
-	cout<<"Push Data:"<<nData<<endl;
+	return true;
 }
 
 template <typename T>
@@ -59,7 +59,6 @@ T ListStack<T>::Pop()
 		m_pTop = m_pHead->pNext;
 		pTemp->pNext = NULL;
 		delete pTemp;
-		cout<<"Pop Data:"<<nData<<endl;
 		return nData;
 	}
 	else
@@ -67,6 +66,12 @@ T ListStack<T>::Pop()
 		TRACE("the stack is empty!");
 		return ERROR_EMPTY;
 	}
+}
+
+template<typename T>
+int ListStack<T>::GetStackSize() const
+{
+	return m_nSize;
 }
 
 template<typename T>
@@ -82,7 +87,6 @@ T ListStack<T>::Top()
 	{
 		T nData;
 		nData = m_pTop->nData;
-		cout<<"Return Top Data:"<<nData<<endl;
 		return nData;
 	}
 	else
@@ -129,12 +133,15 @@ void ListStack<T>::Test()
 		unsigned int nDataByte = dataIO.GetDataByte();
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
+			cout<<"Push Data:"<<pData[i]<<endl;
 			Push(pData[i]);
 		}
-		Top();
+		T nData = Top();
+		cout<<"Return Top Data:"<<nData<<endl;
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
-			Pop();
+			nData = Pop();
+			cout<<"Pop Data:"<<nData<<endl;
 		}
 		Pop();
 		cout<<TEST_END_STRING<<endl<<endl;

@@ -15,14 +15,21 @@ public:
 		SetClassType(DATA_STRUCT);
 		SetTitle("Data Struct: Stack Implemented By Array");
 		m_nSize = 10;
-		m_pArray = new T[10];
+		try
+		{
+			m_pArray = new int[10];
+		}
+		catch(...)
+		{
+			TRACE("new failure!");
+		}
 		m_nTop = -1;
 	}
 	ArrayStack(int nSize);
 	~ArrayStack(void);
 	int GetStackSize(void) const;
 	void Description(void) const;
-	void Push(const T nData);
+	bool Push(const T nData);
 	T Pop();
 	bool IsEmpty();
 	T Top();

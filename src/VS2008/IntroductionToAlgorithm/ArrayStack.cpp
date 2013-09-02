@@ -21,7 +21,10 @@ template <typename T>
 ArrayStack<T>::~ArrayStack(void)
 {
 	if(m_pArray)
+	{
 		delete[] m_pArray;
+		m_pArray = NULL;
+	}
 	m_nSize = 0;
 	m_nTop = -1;
 }
@@ -52,18 +55,18 @@ void ArrayStack<T>::Description(void) const
 }
 
 template <typename T>
-void ArrayStack<T>::Push(const T nData)
+bool ArrayStack<T>::Push(const T nData)
 {
 	if(m_nTop == m_nSize - 1)
 	{
 		TRACE("the stack is full!");
-		return;
+		return false;
 	}
 	else
 	{
-		cout<<"Push Data:"<<nData<<endl;
 		++m_nTop;
 		m_pArray[m_nTop] = nData;
+		return true;
 	}
 }
 
@@ -78,7 +81,6 @@ T ArrayStack<T>::Pop()
 	else
 	{
 		--m_nTop;
-		cout<<"Pop Data:"<<m_pArray[m_nTop+1]<<endl;
 		return m_pArray[m_nTop+1];
 	}
 }
@@ -99,7 +101,6 @@ T ArrayStack<T>::Top()
 	}
 	else
 	{
-		cout<<"Return Top Data:"<<m_pArray[m_nTop]<<endl;
 		return m_pArray[m_nTop];
 	}
 }
@@ -122,12 +123,15 @@ void ArrayStack<T>::Test()
 		unsigned int nDataByte = dataIO.GetDataByte();
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
+			cout<<"Push Data:"<<pData[i]<<endl;
 			Push(pData[i]);
 		}
-		Top();
+		T nData = Top();
+		cout<<"Return Top Data:"<<nData<<endl;
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
-			Pop();
+			nData = Pop();
+			cout<<"Pop Data:"<<nData<<endl;
 		}
 		Pop();
 		cout<<TEST_END_STRING<<endl<<endl;
