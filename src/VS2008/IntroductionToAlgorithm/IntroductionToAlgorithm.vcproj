@@ -179,6 +179,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CycleDoublyLinkList.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\DataIO.cpp"
 				>
 			</File>
@@ -214,6 +218,10 @@
 			</File>
 			<File
 				RelativePath=".\common.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CycleDoublyLinkList.h"
 				>
 			</File>
 			<File

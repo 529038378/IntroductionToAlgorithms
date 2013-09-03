@@ -25,7 +25,7 @@ ListStack<T>::~ListStack()
 {
 	ListNode<T> *pList = m_pHead;
 	ListNode<T> *pTemp = NULL;
-	if(pList != NULL)
+	while(pList != NULL)
 	{
 		pTemp = pList->pNext;
 		delete pList;

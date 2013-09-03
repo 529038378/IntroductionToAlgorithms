@@ -56,6 +56,7 @@ void Display::ShowDataStructItems()
 	ArrayStack<int> dsArrayStack;
 	ListStack<int>	lsListStack;
 	ArrayQueue<int> aqArrayQueue;
+	CycleDoublyLinkList<int> dcllCycleDoublyLinkList;
 Begin:
 	cout<<WELCOME_STRING<<endl;
 	cout<<"This is the Implement of Data Structs"<<endl;
@@ -63,6 +64,7 @@ Begin:
 	cout<<"1.	Stack(Implement of Array);"<<endl;
 	cout<<"2.	Stack(Implement of List);"<<endl;
 	cout<<"3.	Queue(Implement of Array);"<<endl;
+	cout<<"4.	Cycle Doubly Linked List"<<endl;
 	cout<<"98.	Up Layer;"<<endl;
 	cout<<"99.	Quit."<<endl;
 	cout<<STAR_STRING<<endl;
@@ -98,6 +100,12 @@ Begin:
 			cout<<aqArrayQueue.GetTitle().c_str()<<endl;
 			aqArrayQueue.Description();
 			aqArrayQueue.Test();
+			goto Begin;
+			break;
+		case 4:
+			cout<<dcllCycleDoublyLinkList.GetTitle().c_str()<<endl;
+			dcllCycleDoublyLinkList.Description();
+			dcllCycleDoublyLinkList.Test();
 			goto Begin;
 			break;
 		case 98:

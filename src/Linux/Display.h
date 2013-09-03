@@ -8,6 +8,8 @@
 #include "ListStack.cpp"
 #include "ArrayQueue.h"
 #include "ArrayQueue.cpp"
+#include "CycleDoublyLinkList.h"
+#include "CycleDoublyLinkList.cpp"
 
 class Display
 {
