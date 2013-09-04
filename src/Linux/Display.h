@@ -10,6 +10,8 @@
 #include "ArrayQueue.cpp"
 #include "CycleDoublyLinkList.h"
 #include "CycleDoublyLinkList.cpp"
+#include "BinarySearchTree.h"
+#include "BinarySearchTree.cpp"
 
 class Display
 {

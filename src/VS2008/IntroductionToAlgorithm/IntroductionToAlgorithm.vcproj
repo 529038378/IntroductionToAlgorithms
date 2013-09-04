@@ -179,6 +179,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BinarySearchTree.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\CycleDoublyLinkList.cpp"
 				>
 			</File>
@@ -214,6 +218,10 @@
 			</File>
 			<File
 				RelativePath=".\ArrayStack.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BinarySearchTree.h"
 				>
 			</File>
 			<File

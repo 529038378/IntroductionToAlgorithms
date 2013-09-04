@@ -57,6 +57,7 @@ void Display::ShowDataStructItems()
 	ListStack<int>	lsListStack;
 	ArrayQueue<int> aqArrayQueue;
 	CycleDoublyLinkList<int> dcllCycleDoublyLinkList;
+	BinarySearchTree<int> bstBinarySearchTree;
 Begin:
 	cout<<WELCOME_STRING<<endl;
 	cout<<"This is the Implement of Data Structs"<<endl;
@@ -65,6 +66,7 @@ Begin:
 	cout<<"2.	Stack(Implement of List);"<<endl;
 	cout<<"3.	Queue(Implement of Array);"<<endl;
 	cout<<"4.	Cycle Doubly Linked List"<<endl;
+	cout<<"5.	Binary Search Tree"<<endl;
 	cout<<"98.	Up Layer;"<<endl;
 	cout<<"99.	Quit."<<endl;
 	cout<<STAR_STRING<<endl;
@@ -106,6 +108,12 @@ Begin:
 			cout<<dcllCycleDoublyLinkList.GetTitle().c_str()<<endl;
 			dcllCycleDoublyLinkList.Description();
 			dcllCycleDoublyLinkList.Test();
+			goto Begin;
+			break;
+		case 5:
+			cout<<bstBinarySearchTree.GetTitle().c_str()<<endl;
+			bstBinarySearchTree.Description();
+			bstBinarySearchTree.Test();
 			goto Begin;
 			break;
 		case 98:

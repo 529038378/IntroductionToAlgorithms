@@ -21,7 +21,7 @@ public:
 	~CycleDoublyLinkList();
 	void Description(void) const;
 	void Test();
-	int GetStackSize(void) const;
+	int GetListSize(void) const;
 	bool IsEmpty();
 	bool Insert(T nData);
 	CDListNode<T>* Search(T nData);

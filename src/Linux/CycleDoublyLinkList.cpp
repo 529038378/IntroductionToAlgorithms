@@ -86,7 +86,7 @@ void CycleDoublyLinkList<T>::Test()
 }
 
 template <typename T>
-int CycleDoublyLinkList<T>::GetStackSize() const
+int CycleDoublyLinkList<T>::GetListSize() const
 {
 	return m_nSize;
 }

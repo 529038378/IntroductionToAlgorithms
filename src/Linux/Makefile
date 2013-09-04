@@ -1,6 +1,7 @@
 CXX =  g++
 CPPFLAGS = -Wall
-obj = ArrayStack.o ListStack.o ArrayQueue.o CycleDoublyLinkList.o DataIO.o Display.o ia.o
+obj = ArrayStack.o ListStack.o ArrayQueue.o CycleDoublyLinkList.o DataIO.o Display.o ia.o \
+	BinarySearchTree.o
 
 ia:$(obj)
 	$(CXX) -o ia $(obj)
