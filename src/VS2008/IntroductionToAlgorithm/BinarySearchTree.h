@@ -6,24 +6,14 @@
 #include "DataIO.h"
 
 template <typename T>
-int DefaultCompare(T x,T y)
-{
-	if(x-y>0)
-	{
-		return 1;
-	}
-	else
-	{
-		if(x-y==0)
-			return 0;
-		else
-			return -1;
-	}
-}
-
-template <typename T>
 struct BSTNode
 {
+	BSTNode()
+	{
+		pLeft = NULL;
+		pRight = NULL;
+		pParent = NULL;
+	}
 	BSTNode* pLeft;
 	BSTNode* pRight;
 	BSTNode* pParent;

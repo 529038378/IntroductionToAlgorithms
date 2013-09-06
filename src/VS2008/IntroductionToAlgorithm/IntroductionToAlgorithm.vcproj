@@ -202,6 +202,10 @@
 				RelativePath=".\ListStack.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\RedBlackTree.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Í·ÎÄ¼þ"
@@ -242,6 +246,10 @@
 			</File>
 			<File
 				RelativePath=".\ListStack.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RedBlackTree.h"
 				>
 			</File>
 		</Filter>

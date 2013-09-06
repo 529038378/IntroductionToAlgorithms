@@ -33,8 +33,8 @@ BinarySearchTree<T>::~BinarySearchTree()
 		}
 		delete m_pRoot;
 		m_pRoot = NULL;
-		m_pFun = NULL;
 	}
+	m_pFun = NULL;
 }
 
 template <typename T>

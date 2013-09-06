@@ -58,7 +58,7 @@ void Display::ShowDataStructItems()
 	ArrayQueue<int> aqArrayQueue;
 	CycleDoublyLinkList<int> dcllCycleDoublyLinkList;
 	BinarySearchTree<int> bstBinarySearchTree;
-Begin:
+	RedBlackTree<int> rbtRedBlackTree;
 	cout<<WELCOME_STRING<<endl;
 	cout<<"This is the Implement of Data Structs"<<endl;
 	cout<<"Please Select the Item you are Interest in:"<<endl;
@@ -67,6 +67,7 @@ Begin:
 	cout<<"3.	Queue(Implement of Array);"<<endl;
 	cout<<"4.	Cycle Doubly Linked List"<<endl;
 	cout<<"5.	Binary Search Tree"<<endl;
+	cout<<"6.	Red Black Tree"<<endl;
 	cout<<"98.	Up Layer;"<<endl;
 	cout<<"99.	Quit."<<endl;
 	cout<<STAR_STRING<<endl;
@@ -81,7 +82,7 @@ Begin:
 			cout<<"Input Error! Please Select Again!"<<endl;
 			cin.clear();
 			cin.sync();
-			goto Begin;
+			ShowDataStructItems();
 		}
 		ClearScreen();
 		switch(nSelect)
@@ -90,31 +91,37 @@ Begin:
 			cout<<dsArrayStack.GetTitle().c_str()<<endl;
 			dsArrayStack.Description();
 			dsArrayStack.Test();
-			goto Begin;
+			ShowDataStructItems();
 			break;
 		case 2:
 			cout<<lsListStack.GetTitle().c_str()<<endl;
 			lsListStack.Description();
 			lsListStack.Test();
-			goto Begin;
+			ShowDataStructItems();
 			break;
 		case 3:
 			cout<<aqArrayQueue.GetTitle().c_str()<<endl;
 			aqArrayQueue.Description();
 			aqArrayQueue.Test();
-			goto Begin;
+			ShowDataStructItems();
 			break;
 		case 4:
 			cout<<dcllCycleDoublyLinkList.GetTitle().c_str()<<endl;
 			dcllCycleDoublyLinkList.Description();
 			dcllCycleDoublyLinkList.Test();
-			goto Begin;
+			ShowDataStructItems();
 			break;
 		case 5:
 			cout<<bstBinarySearchTree.GetTitle().c_str()<<endl;
 			bstBinarySearchTree.Description();
 			bstBinarySearchTree.Test();
-			goto Begin;
+			ShowDataStructItems();
+			break;
+		case 6:
+			cout<<rbtRedBlackTree.GetTitle().c_str()<<endl;
+			rbtRedBlackTree.Description();
+			rbtRedBlackTree.Test();
+			ShowDataStructItems();
 			break;
 		case 98:
 			goto ShowWelcome;
@@ -127,7 +134,7 @@ Begin:
 			cout<<"Select Error! Please Select Again!"<<endl;
 			cin.clear();
 			cin.sync();
-			goto Begin;
+			ShowDataStructItems();
 			break;
 		}
 	}

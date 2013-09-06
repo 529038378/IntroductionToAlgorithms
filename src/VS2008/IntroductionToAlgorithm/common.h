@@ -27,4 +27,22 @@ enum CLASS_TYPE {OTHER = -1,DATA_STRUCT,ALGORITHM,PRACTICAL_ISSUE,INTERVIEW_ISSU
 	cerr<<"Error Message:	"<<fmt<<endl<<"In File->"<<__FILE__<<endl<<"Line->"<<__LINE__<<endl<<"Function->"<<__FUNCTION__<<endl; \
 	cerr<<ERROR_REPORT_END_STRING<<endl<<endl
 
+template <typename T>
+int DefaultCompare(T x,T y)
+{
+	if(x-y>0)
+	{
+		return 1;
+	}
+	else
+	{
+		if(x-y==0)
+			return 0;
+		else
+			return -1;
+	}
+}
+
+enum COLOR {RED = 0,BLACK = 1};
+
 #endif
