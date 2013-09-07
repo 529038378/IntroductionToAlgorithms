@@ -1,5 +1,13 @@
 #include "RedBlackTree.h"
 
+/**************************************************************
+**	File:			RedBlackTree.cpp
+**	Description:	The implementation of the Class RedBlackTree
+**	Author:			Daiyl
+**	Date:			2013.8
+**************************************************************/
+
+
 template <typename T>
 RedBlackTree<T>::RedBlackTree()
 {
@@ -15,8 +23,8 @@ RedBlackTree<T>::RedBlackTree()
 	{
 		TRACE("new failure");
 	}
-	m_pRoot = m_pNil;
-	m_pRoot->pParent = m_pNil;
+	m_pRoot = m_pNil;										//Root node point to nil
+	m_pRoot->pParent = m_pNil;								//Root's parent is also nil
 }
 
 template <typename T>
@@ -91,20 +99,20 @@ void RedBlackTree<T>::Test()
 	T* pData = dataIO.GetDataFromStdIO(1);
 	if(pData != NULL)
 	{
-		unsigned int nDataByte = dataIO.GetDataByte();
+		unsigned int nDataByte = dataIO.GetDataByte();						//Get data from stdio and insert it to the tree
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
 			cout<<"Insert Data:"<<pData[i]<<endl;
 			Insert(pData[i]);
 		}
-		cout<<"PreorderTraverse the Binary Search Tree"<<endl;
+		cout<<"PreorderTraverse the Binary Search Tree"<<endl;				//Traverse the tree after insertion
 		PreorderTraverse();
 		cout<<endl<<"InorderTraverse the Binary Search Tree"<<endl;
 		InorderTraverse();
 		cout<<endl<<"PostorderTraverse the Binary Search Tree"<<endl;
 		PostorderTraverse();
 		cout<<endl;
-		for(unsigned int i=0;i<nDataByte;i++)
+		for(unsigned int i=0;i<nDataByte;i++)								//Delete all data from the tree
 		{
 			Delete(pData[i]);
 			cout<<"Delete Data:"<<pData[i]<<endl;
@@ -123,7 +131,7 @@ bool RedBlackTree<T>::IsEmpty()
 }
 
 template <typename T>
-RBTNode<T>* RedBlackTree<T>::Search(T nData)
+RBTNode<T>* RedBlackTree<T>::Search(T nData)								//Search data in the tree
 {
 	RBTNode<T>* pTemp = m_pRoot;
 	if((pTemp == NULL) || (m_pFun(pTemp->nData,nData) == 0))
@@ -161,7 +169,7 @@ RBTNode<T>* RedBlackTree<T>::Search(RBTNode<T> *pNode,T nData)
 template <typename T>
 bool RedBlackTree<T>::Insert(T nData)
 {
-	RBTNode<T>* pTempY = m_pNil;
+	RBTNode<T>* pTempY = m_pNil;						//The insert method is almost same as the binary search tree
 	RBTNode<T>* pTempX = m_pRoot;
 	RBTNode<T>* pNewNode = NULL;
 	try
@@ -175,9 +183,9 @@ bool RedBlackTree<T>::Insert(T nData)
 	{
 		TRACE("new failure");
 	}
-	while(pTempX != m_pNil)
+	while(pTempX != m_pNil)								//The judgement is replaced by m_pNil node
 	{
-		pTempY = pTempX;
+		pTempY = pTempX;								//Find the final place to locate the node
 		if(m_pFun(pTempX->nData,nData)>0)
 		{
 			pTempX = pTempX->pLeft;
@@ -188,7 +196,7 @@ bool RedBlackTree<T>::Insert(T nData)
 		}
 	}
 	pNewNode->pParent = pTempY;
-	if(pTempY == m_pNil)
+	if(pTempY == m_pNil)								//If the node is root
 	{
 		m_pRoot = pNewNode;
 	}
@@ -205,21 +213,22 @@ bool RedBlackTree<T>::Insert(T nData)
 	}
 	pNewNode->pLeft = m_pNil;
 	pNewNode->pRight = m_pNil;
-	pNewNode->eColor = RED;
-	bool bRet = InsertFixUp(pNewNode);
+	pNewNode->eColor = RED;								//Set the new node's color to RED 
+	bool bRet = InsertFixUp(pNewNode);					//Fixup the color of the nodes in the tree
 	return bRet;
 }
 
+//Fixup the color after insert a new node,the detail to descript the process is in the book <Introduction to Algorithms>
 template <typename T>
 bool RedBlackTree<T>::InsertFixUp(RBTNode<T>* pNode)
 {
 	RBTNode<T>* pTempZ = pNode;
-	while(pTempZ->pParent->eColor == RED)
+	while(pTempZ->pParent->eColor == RED)				//while the node parent's color red, let's fixup
 	{
 		if(pTempZ->pParent->pParent->pLeft == pTempZ->pParent)
 		{
-			RBTNode<T>* pTempY = pTempZ->pParent->pParent->pRight;
-			if(pTempY->eColor == RED)
+			RBTNode<T>* pTempY = pTempZ->pParent->pParent->pRight;		//Get the uncle node of pNode
+			if(pTempY->eColor == RED)									//Case 1
 			{
 				pTempZ->pParent->eColor = BLACK;
 				pTempY->eColor = BLACK;
@@ -228,12 +237,12 @@ bool RedBlackTree<T>::InsertFixUp(RBTNode<T>* pNode)
 			}
 			else
 			{
-				if(pTempZ->pParent->pRight == pTempZ)
+				if(pTempZ->pParent->pRight == pTempZ)					//Case 2
 				{
 					pTempZ = pTempZ->pParent;
 					LeftRotate(pTempZ);
 				}
-				pTempZ->pParent->eColor = BLACK;
+				pTempZ->pParent->eColor = BLACK;						//Case 3
 				pTempZ->pParent->pParent->eColor = RED;
 				RightRotate(pTempZ->pParent->pParent);
 			}
@@ -241,7 +250,7 @@ bool RedBlackTree<T>::InsertFixUp(RBTNode<T>* pNode)
 		else
 		{
 			RBTNode<T>* pTempY = pTempZ->pParent->pParent->pLeft;
-			if(pTempY->eColor == RED)
+			if(pTempY->eColor == RED)									//Case 1
 			{
 				pTempZ->pParent->eColor = BLACK;
 				pTempY->eColor = BLACK;
@@ -250,12 +259,12 @@ bool RedBlackTree<T>::InsertFixUp(RBTNode<T>* pNode)
 			}
 			else
 			{
-				if(pTempZ->pParent->pLeft == pTempZ)
+				if(pTempZ->pParent->pLeft == pTempZ)					//Case 2
 				{
 					pTempZ = pTempZ->pParent;
 					RightRotate(pTempZ);
 				}
-				pTempZ->pParent->eColor = BLACK;
+				pTempZ->pParent->eColor = BLACK;						//Case 3
 				pTempZ->pParent->pParent->eColor = RED;
 				LeftRotate(pTempZ->pParent->pParent);
 			}
@@ -266,7 +275,7 @@ bool RedBlackTree<T>::InsertFixUp(RBTNode<T>* pNode)
 }
 
 template <typename T>
-bool RedBlackTree<T>::Delete(T nData)
+bool RedBlackTree<T>::Delete(T nData)									//Search the node and delete it
 {
 	RBTNode<T>* pNode = Search(nData);
 	if(pNode != m_pNil)
@@ -279,6 +288,7 @@ bool RedBlackTree<T>::Delete(T nData)
 	}
 }
 
+//Fixup the color after delete a specified node,the detail to descript the process is in the book <Introduction to Algorithms>
 template <typename T>
 bool RedBlackTree<T>::Delete(RBTNode<T> *pNode)
 {
@@ -322,9 +332,9 @@ bool RedBlackTree<T>::Delete(RBTNode<T> *pNode)
 	{
 		pTempZ->nData = pTempY->nData;
 	}
-	if(pTempY->eColor == BLACK)
+	if(pTempY->eColor == BLACK)							//The deletion process is almost same as the binary search tree
 	{
-		DeleteFixUp(pTempX);
+		DeleteFixUp(pTempX);							//If the deleted node's color is black, the tree's property 5 is broken ,so fix it up
 	}
 	if(pTempY != NULL)
 	{
@@ -348,69 +358,64 @@ bool RedBlackTree<T>::DeleteFixUp(RBTNode<T>* pNode)
 		if(pTempX == pTempX->pParent->pLeft)
 		{
 			pTempW = pTempX->pParent->pRight;
-			if(pTempW->eColor == RED)
+			if(pTempW->eColor == RED)													//Case 1
 			{
 				pTempW->eColor = BLACK;
 				pTempX->pParent->eColor = RED;
 				LeftRotate(pTempX->pParent);
 				pTempW = pTempX->pParent->pRight;
 			}
-				if((pTempW->pLeft->eColor == BLACK) && (pTempW->pRight->eColor == BLACK))
+			if((pTempW->pLeft->eColor == BLACK) && (pTempW->pRight->eColor == BLACK))	//Case 2
+			{
+				pTempW->eColor = RED;
+				pTempX = pTempX->pParent;
+			}
+			else
+			{
+				if(pTempW->pRight->eColor == BLACK)										//Case 3
 				{
+					pTempW->pLeft->eColor = BLACK;
 					pTempW->eColor = RED;
-					pTempX = pTempX->pParent;
+					RightRotate(pTempW);
+					pTempW = pTempX->pParent->pRight;
 				}
-				else
-				{
-					if(pTempW->pRight->eColor == BLACK)
-					{
-						pTempW->pLeft->eColor = BLACK;
-						pTempW->eColor = RED;
-						RightRotate(pTempW);
-						pTempW = pTempX->pParent->pRight;
-					}
-					pTempW->eColor = pTempX->pParent->eColor;
-					pTempX->pParent->eColor = BLACK;
-					pTempW->pRight->eColor = BLACK;
-					LeftRotate(pTempX->pParent);
-					pTempX = m_pRoot;
-				}
-			//}
+				pTempW->eColor = pTempX->pParent->eColor;								//Case 4
+				pTempX->pParent->eColor = BLACK;
+				pTempW->pRight->eColor = BLACK;
+				LeftRotate(pTempX->pParent);
+				pTempX = m_pRoot;
+			}
 		}
 		else
 		{
 			pTempW = pTempX->pParent->pLeft;
-			if(pTempW->eColor == RED)
+			if(pTempW->eColor == RED)													//Case 1
 			{
 				pTempW->eColor = BLACK;
 				pTempX->pParent->eColor = RED;
-				//LeftRotate(pTempX->pParent);
 				RightRotate(pTempX->pParent);
 				pTempW = pTempX->pParent->pLeft;
 			}
-				if((pTempW->pLeft->eColor == BLACK) && (pTempW->pRight->eColor == BLACK))
+			if((pTempW->pLeft->eColor == BLACK) && (pTempW->pRight->eColor == BLACK))	//Case 2
+			{
+				pTempW->eColor = RED;
+				pTempX = pTempX->pParent;
+			}
+			else
+			{
+				if(pTempW->pLeft->eColor == BLACK)										//Case 3
 				{
+					pTempW->pRight->eColor = BLACK;
 					pTempW->eColor = RED;
-					pTempX = pTempX->pParent;
+					LeftRotate(pTempW);
+					pTempW = pTempX->pParent->pLeft;
 				}
-				else
-				{
-					if(pTempW->pLeft->eColor == BLACK)
-					{
-						pTempW->pRight->eColor = BLACK;
-						pTempW->eColor = RED;
-						//RightRotate(pTempW);
-						LeftRotate(pTempW);
-						pTempW = pTempX->pParent->pLeft;
-					}
-					pTempW->eColor = pTempX->pParent->eColor;
-					pTempX->pParent->eColor = BLACK;
-					pTempW->pLeft->eColor = BLACK;
-					//LeftRotate(pTempX->pParent);
-					RightRotate(pTempX->pParent);
-					pTempX = m_pRoot;
-				}
-			//}
+				pTempW->eColor = pTempX->pParent->eColor;								//Case 4
+				pTempX->pParent->eColor = BLACK;
+				pTempW->pLeft->eColor = BLACK;
+				RightRotate(pTempX->pParent);
+				pTempX = m_pRoot;
+			}
 		}
 	}
 	pTempX->eColor = BLACK;
@@ -553,8 +558,7 @@ void RedBlackTree<T>::LeftRotate(RBTNode<T>* pNode)
 		RBTNode<T>* pTempX = pNode;
 		RBTNode<T>* pTempY = pNode->pRight;
 		pTempX->pRight = pTempY->pLeft;
-		//if(pTempY->pLeft !=m_pNil)
-			pTempY->pLeft->pParent = pTempX;
+		pTempY->pLeft->pParent = pTempX;
 		pTempY->pParent = pTempX->pParent;
 		if(pTempX->pParent == m_pNil)
 		{
@@ -587,8 +591,7 @@ void RedBlackTree<T>::RightRotate(RBTNode<T>* pNode)
 		RBTNode<T>* pTempX = pNode;
 		RBTNode<T>* pTempY = pNode->pLeft;
 		pTempX->pLeft = pTempY->pRight;
-		//if(pTempY->pRight != m_pNil)
-			pTempY->pRight->pParent = pTempX;
+		pTempY->pRight->pParent = pTempX;
 		pTempY->pParent = pTempX->pParent;
 		if(pTempX->pParent == m_pNil)
 		{

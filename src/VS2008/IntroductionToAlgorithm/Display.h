@@ -1,6 +1,15 @@
 #ifndef _DISPLAY_H
 #define _DISPLAY_H
 
+/**************************************************************
+**	File:			Display.h
+**	Description:	The Definition of the  Class Display
+**	Author:			Daiyl
+**	Date:			2013.8
+**************************************************************/
+
+
+
 #include "common.h"
 #include "ArrayStack.h"
 #include "ArrayStack.cpp"
@@ -20,10 +29,10 @@ class Display
 public:
 	Display(){};
 	~Display(){};
-	void Show();
-	void ClearScreen();
+	void Show();								//Show the related items
+	void ClearScreen();							//Clear the screen in the terminal
 private:
-	void Welcome();
+	void Welcome();								//Show the welcome page
 	void ShowDataStructItems();
 	void ShowAlgorithmAndPracticalIssuesItems();
 };

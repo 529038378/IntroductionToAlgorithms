@@ -1,5 +1,14 @@
 #include "ArrayStack.h"
 
+/**************************************************************
+**	File:			ArrayStack.cpp
+**	Description:	The Definition of the  Class ArrayStack,
+**					Array implementation of the stack struct.
+**	Author:			Daiyl
+**	Date:			2013.8
+**************************************************************/
+
+
 template <typename T>
 ArrayStack<T>::ArrayStack(int nSize)
 {
@@ -57,7 +66,7 @@ void ArrayStack<T>::Description(void) const
 template <typename T>
 bool ArrayStack<T>::Push(const T nData)
 {
-	if(m_nTop == m_nSize - 1)
+	if(m_nTop == m_nSize - 1)							//Judge if the stack is full
 	{
 		TRACE("the stack is full!");
 		return false;
@@ -65,7 +74,7 @@ bool ArrayStack<T>::Push(const T nData)
 	else
 	{
 		++m_nTop;
-		m_pArray[m_nTop] = nData;
+		m_pArray[m_nTop] = nData;						//Push data to stack and update the top value
 		return true;
 	}
 }
@@ -80,7 +89,7 @@ T ArrayStack<T>::Pop()
 	}
 	else
 	{
-		--m_nTop;
+		--m_nTop;										//Pop data from stack and update the to value
 		return m_pArray[m_nTop+1];
 	}
 }
@@ -124,16 +133,16 @@ void ArrayStack<T>::Test()
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
 			cout<<"Push Data:"<<pData[i]<<endl;
-			Push(pData[i]);
+			Push(pData[i]);									//Push data into stack which is got from DataIO
 		}
-		T nData = Top();
+		T nData = Top();									//Return the top data value of the stack
 		cout<<"Return Top Data:"<<nData<<endl;
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
-			nData = Pop();
+			nData = Pop();									//Pop the data from the stack top
 			cout<<"Pop Data:"<<nData<<endl;
 		}
-		Pop();
+		Pop();												//Pop data judge if the stack is empty
 		cout<<TEST_END_STRING<<endl<<endl;
 	}
 }

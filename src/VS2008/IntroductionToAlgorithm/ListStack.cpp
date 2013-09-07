@@ -1,5 +1,12 @@
 #include "ListStack.h"
 
+/**************************************************************
+**	File:			ListStack.cpp
+**	Description:	The implementation of the Class ListStack
+**	Author:			Daiyl
+**	Date:			2013.8
+**************************************************************/
+
 template <typename T>
 ListStack<T>::ListStack()
 {
@@ -38,7 +45,7 @@ ListStack<T>::~ListStack()
 template <typename T>
 bool ListStack<T>::Push(const T nData)
 {
-	ListNode<T> *pNewNode = new ListNode<T>[1];
+	ListNode<T> *pNewNode = new ListNode<T>[1];				//Allocate the new node memory and add it to the top of the list
 	pNewNode->nData = nData;
 	pNewNode->pNext = m_pHead->pNext;
 	m_pHead->pNext = pNewNode;
@@ -50,7 +57,7 @@ bool ListStack<T>::Push(const T nData)
 template <typename T>
 T ListStack<T>::Pop()
 {
-	if(!IsEmpty())
+	if(!IsEmpty())											//If the list is not empty ,pop the top data
 	{
 		T nData;
 		ListNode<T> *pTemp = m_pHead->pNext;
@@ -130,14 +137,14 @@ void ListStack<T>::Test()
 	T* pData = dataIO.GetDataFromStdIO(1);
 	if(pData != NULL)
 	{
-		unsigned int nDataByte = dataIO.GetDataByte();
+		unsigned int nDataByte = dataIO.GetDataByte();				//Get data from stdio and push it
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
 			cout<<"Push Data:"<<pData[i]<<endl;
 			Push(pData[i]);
 		}
 		T nData = Top();
-		cout<<"Return Top Data:"<<nData<<endl;
+		cout<<"Return Top Data:"<<nData<<endl;						//Remove all data from the stack list
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
 			nData = Pop();

@@ -1,5 +1,13 @@
 #include "CycleDoublyLinkList.h"
 
+/**************************************************************
+**	File:			CycleDoublyLinkList.cpp
+**	Description:	The implementation of the  Class CycleDoublyLinkList
+**	Author:			Daiyl
+**	Date:			2013.8
+**************************************************************/
+
+
 template <typename T>
 CycleDoublyLinkList<T>::CycleDoublyLinkList()
 {
@@ -64,19 +72,19 @@ void CycleDoublyLinkList<T>::Test()
 	T* pData = dataIO.GetDataFromStdIO(1);
 	if(pData != NULL)
 	{
-		unsigned int nDataByte = dataIO.GetDataByte();
+		unsigned int nDataByte = dataIO.GetDataByte();				//Get data from the class DataIO and insert them into list
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
 			cout<<"Insert Data:"<<pData[i]<<endl;
 			Insert(pData[i]);
 		}
 		cout<<"Traverse the list"<<endl;
-		Traverse();
+		Traverse();													//Traverse data back and forth
 		cout<<"Traverse the list backward"<<endl;
 		TraverseBackward();
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
-			Delete(pData[i]);
+			Delete(pData[i]);										//Delete all data and traverse again to see if the list is empty
 			cout<<"Delete Data:"<<pData[i]<<endl;
 		}
 		cout<<"Traverse the list"<<endl;
@@ -102,7 +110,7 @@ bool CycleDoublyLinkList<T>::Insert(T nData)
 {
 	try
 	{
-		CDListNode<T> *pNewNode = new CDListNode<T>[1];
+		CDListNode<T> *pNewNode = new CDListNode<T>[1];						//Allocate the data memory and insert it after sentinel node
 		pNewNode->nData = nData;
 		pNewNode->pNext = m_pSentinel->pNext;
 		m_pSentinel->pNext->pPrev = pNewNode;
@@ -121,7 +129,7 @@ bool CycleDoublyLinkList<T>::Insert(T nData)
 template <typename T>
 CDListNode<T>* CycleDoublyLinkList<T>::Search(T nData)
 {
-	CDListNode<T>* pTemp = m_pSentinel->pNext;
+	CDListNode<T>* pTemp = m_pSentinel->pNext;								//Search data linear
 	while((pTemp != m_pSentinel) && (pTemp->nData != nData))
 	{
 		pTemp = pTemp->pNext;
@@ -141,7 +149,7 @@ CDListNode<T>* CycleDoublyLinkList<T>::Search(T nData)
 template <typename T>
 bool CycleDoublyLinkList<T>::Delete(T nData)
 {
-	CDListNode<T>*pNode = Search(nData);
+	CDListNode<T>*pNode = Search(nData);									//Search the specified data and remove the node
 	if(pNode == NULL)
 	{
 		TRACE("can not find");
@@ -157,7 +165,7 @@ bool CycleDoublyLinkList<T>::Delete(T nData)
 template <typename T>
 bool CycleDoublyLinkList<T>::Delete(CDListNode<T>* pNode)
 {
-	CDListNode<T>* pTemp = pNode;
+	CDListNode<T>* pTemp = pNode;											//Update the related node the delete the node
 	if(pTemp!=NULL)
 	{
 		pTemp->pPrev->pNext = pTemp->pNext;

@@ -1,5 +1,14 @@
 #include "BinarySearchTree.h"
 
+/**************************************************************
+**	File:			BinarySearchTree.cpp
+**	Description:	The Definition of the  Class BinarySearchTree,
+**					Implementation of the BinarySearchTree struct.
+**	Author:			Daiyl
+**	Date:			2013.8
+**************************************************************/
+
+
 template <typename T>
 BinarySearchTree<T>::BinarySearchTree()
 {
@@ -77,14 +86,14 @@ void BinarySearchTree<T>::Test()
 	T* pData = dataIO.GetDataFromStdIO(1);
 	if(pData != NULL)
 	{
-		unsigned int nDataByte = dataIO.GetDataByte();
+		unsigned int nDataByte = dataIO.GetDataByte();					//Add data into tree
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
 			cout<<"Insert Data:"<<pData[i]<<endl;
 			Insert(pData[i]);
 		}
 		cout<<"PreorderTraverse the Binary Search Tree"<<endl;
-		PreorderTraverse();
+		PreorderTraverse();												//Traverse the node of the tree
 		cout<<endl<<"InorderTraverse the Binary Search Tree"<<endl;
 		InorderTraverse();
 		cout<<endl<<"PostorderTraverse the Binary Search Tree"<<endl;
@@ -92,7 +101,7 @@ void BinarySearchTree<T>::Test()
 		cout<<endl;
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
-			Delete(pData[i]);
+			Delete(pData[i]);											//Delete data from the tree
 			cout<<"Delete Data:"<<pData[i]<<endl;
 			cout<<"PreorderTraverse the Binary Search Tree"<<endl;
 			PreorderTraverse();
@@ -111,7 +120,7 @@ bool BinarySearchTree<T>::IsEmpty()
 template <typename T>
 BSTNode<T>* BinarySearchTree<T>::Search(T nData)
 {
-	BSTNode<T>* pTemp = m_pRoot;
+	BSTNode<T>* pTemp = m_pRoot;										//Search the nData in the tree
 	if((pTemp == NULL) || (m_pFun(pTemp->nData,nData) == 0))
 	{
 		return pTemp;
@@ -152,7 +161,7 @@ bool BinarySearchTree<T>::Insert(T nData)
 	while(pTemp != NULL)
 	{
 		pParent = pTemp;
-		if(m_pFun(pTemp->nData,nData)>0)
+		if(m_pFun(pTemp->nData,nData)>0)								//Use the m_pFun function pointer to compare the node data
 		{
 			pTemp = pTemp->pLeft;
 		}
@@ -161,9 +170,9 @@ bool BinarySearchTree<T>::Insert(T nData)
 			pTemp = pTemp->pRight;
 		}
 	}
-	BSTNode<T>* pNewNode = new BSTNode<T>[1];
-	pNewNode->pParent = pParent;
-	if(pParent == NULL)
+	BSTNode<T>* pNewNode = new BSTNode<T>[1];							//Allocate the new node memory
+	pNewNode->pParent = pParent;										//Update the new node's parent pointer
+	if(pParent == NULL)													//If this is the first in the tree ,update the root
 	{
 		m_pRoot = pNewNode;
 		pNewNode->nData = nData;
@@ -171,7 +180,7 @@ bool BinarySearchTree<T>::Insert(T nData)
 	}
 	else
 	{
-		if(m_pFun(pParent->nData,nData)>0)
+		if(m_pFun(pParent->nData,nData)>0)								//If the new node's data is small than its parent, link to the left of the parent,otherwise link to the right
 		{
 			pParent->pLeft = pNewNode;
 			pNewNode->nData = nData;
@@ -188,7 +197,7 @@ bool BinarySearchTree<T>::Insert(T nData)
 }
 
 template <typename T>
-bool BinarySearchTree<T>::Delete(T nData)
+bool BinarySearchTree<T>::Delete(T nData)								//Search the data and delete it
 {
 	BSTNode<T>* pNode = Search(nData);
 	if(pNode != NULL)
@@ -206,15 +215,15 @@ bool BinarySearchTree<T>::Delete(BSTNode<T>* pNode)
 {
 	BSTNode<T>* pTempY = NULL;
 	BSTNode<T>* pTempX = NULL;
-	if((pNode->pLeft == NULL) || (pNode->pRight == NULL))
+	if((pNode->pLeft == NULL) || (pNode->pRight == NULL))				//If pNode has children less than 2
 	{
 		pTempY = pNode;
 	}
 	else
 	{
-		pTempY = Successor(pNode);
+		pTempY = Successor(pNode);										//Get the successor of the pNode if the node has 2 children
 	}
-	if(pTempY->pLeft != NULL)
+	if(pTempY->pLeft != NULL)											//Update pointer upward
 	{
 		pTempX = pTempY->pLeft;
 	}
@@ -226,13 +235,13 @@ bool BinarySearchTree<T>::Delete(BSTNode<T>* pNode)
 	{
 		pTempX->pParent = pTempY->pParent;
 	}
-	if(pTempY->pParent == NULL)
+	if(pTempY->pParent == NULL)											//If the delete node is root, update the root
 	{
 		m_pRoot = pTempX;
 	}
 	else
 	{
-		if(pTempY->pParent->pLeft == pTempY)
+		if(pTempY->pParent->pLeft == pTempY)							//If the node is the left child of its parent, update its parent's left pointer, otherwise updae the right pointer
 		{
 			pTempY->pParent->pLeft = pTempX;
 		}
@@ -241,7 +250,7 @@ bool BinarySearchTree<T>::Delete(BSTNode<T>* pNode)
 			pTempY->pParent->pRight = pTempX;
 		}
 	}
-	if(pTempY != pNode)
+	if(pTempY != pNode)													//If the node to be deleted is not the original one, copy its data
 	{
 		pNode->nData = pTempY->nData;
 	}
@@ -293,11 +302,11 @@ BSTNode<T>* BinarySearchTree<T>::Maximum(BSTNode<T>* pNode)
 template <typename T>
 BSTNode<T>* BinarySearchTree<T>::Predecessor(BSTNode<T> *pNode)
 {
-	if(pNode->pLeft != NULL)
+	if(pNode->pLeft != NULL)									//If the node's left is not NULL, the predecessor is the maximum one in its left sub tree
 	{
 		return Maximum(pNode->pLeft);
 	}
-	BSTNode<T>* pTempY = pNode->pParent;
+	BSTNode<T>* pTempY = pNode->pParent;						//If the node's left is NULL, the the lowest predecessor is the predecessor and its right child is also the node's predecessor
 	BSTNode<T>* pTempX = pNode;
 	while((pTempY != NULL) && (pTempY->pLeft == pTempX))
 	{
@@ -310,13 +319,13 @@ BSTNode<T>* BinarySearchTree<T>::Predecessor(BSTNode<T> *pNode)
 template <typename T>
 BSTNode<T>* BinarySearchTree<T>::Successor(BSTNode<T> *pNode)
 {
-	if(pNode->pRight != NULL)
+	if(pNode->pRight != NULL)									//If the node's right is not NULL, the successor is the minimum one in its right sub tree
 	{
 		return Minimum(pNode->pRight);
 	}
 	BSTNode<T>* pTempY = pNode->pParent;
 	BSTNode<T>* pTempX = pNode;
-	while((pTempY != NULL) && (pTempY->pRight == pTempX))
+	while((pTempY != NULL) && (pTempY->pRight == pTempX))		//If the node's right is NULL, the the lowest predecessor is the predecessor and its left child is also the node's predecessor
 	{
 		pTempX = pTempY;
 		pTempY = pTempY->pParent;

@@ -1,5 +1,13 @@
 #include "ArrayQueue.h"
 
+/**************************************************************
+**	File:			ArrayQueue.cpp
+**	Description:	The Definition of the  Class ArrayQueue,
+**					Array implementation of the queue struct.
+**	Author:			Daiyl
+**	Date:			2013.8
+**************************************************************/
+
 template <typename T>
 ArrayQueue<T>::ArrayQueue()
 {
@@ -8,7 +16,7 @@ ArrayQueue<T>::ArrayQueue()
 	m_nSize = 10;
 	try
 	{
-		m_pArray = new int[10];
+		m_pArray = new int[10];						//Default queue size is 10
 	}
 	catch(...)
 	{
@@ -89,7 +97,7 @@ bool ArrayQueue<T>::IsEmpty()
 template <typename T>
 bool ArrayQueue<T>::Enqueue(T nData)
 {
-	if(m_nHead == ((m_nTail+1)%(m_nSize)))
+	if(m_nHead == ((m_nTail+1)%(m_nSize)))				//Judge if the queue is full
 	{
 		TRACE("the queue is full");
 		return false;
@@ -97,7 +105,7 @@ bool ArrayQueue<T>::Enqueue(T nData)
 	else
 	{
 		m_pArray[m_nTail] = nData;
-		m_nTail = (m_nTail + 1)%(m_nSize);
+		m_nTail = (m_nTail + 1)%(m_nSize);				//Update the value of tail
 		return true;
 	}
 }
@@ -114,7 +122,7 @@ T ArrayQueue<T>::Dequeue()
 	{
 		T nData;
 		nData = m_pArray[m_nHead];
-		m_nHead = (m_nHead + 1)%(m_nSize);
+		m_nHead = (m_nHead + 1)%(m_nSize);				//Update the value of head
 		return nData;
 	}
 }
@@ -131,20 +139,20 @@ void ArrayQueue<T>::Test()
 	DataIO<T> dataIO;
 	cout<<endl<<TEST_BEGIN_STRING<<endl;
 	cout<<"Let's See The Test of ArrayQueue"<<endl;
-	T* pData = dataIO.GetDataFromStdIO(1);
+	T* pData = dataIO.GetDataFromStdIO(1);				//Get data from DataIO class
 	if(pData != NULL)
 	{
-		unsigned int nDataByte = dataIO.GetDataByte();
+		unsigned int nDataByte = dataIO.GetDataByte();	//Get the length of data
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
 			cout<<"Enqueue Data:"<<pData[i]<<endl;
-			Enqueue(pData[i]);
+			Enqueue(pData[i]);							//Enqueue
 		}
 		T nData = Front();
 		cout<<"Return Front Data:"<<nData<<endl;
 		for(unsigned int i=0;i<nDataByte;i++)
 		{
-			nData = Dequeue();
+			nData = Dequeue();							//Dequeue
 			cout<<"Dequeue Data:"<<nData<<endl;
 		}
 		cout<<TEST_END_STRING<<endl<<endl;

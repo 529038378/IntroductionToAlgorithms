@@ -1,8 +1,8 @@
 IntroductionToAlgorithms
 ========================
 
-This is a repository about the implements and solution of data struct, algorithms and practical issues. 
-The project is programmed in C++ and build in Visual Studio 2008, I will build it in Linux environment later. 
+This is a project about the implements and solution of data struct, algorithms and practical issues. 
+The project is programmed in C++ and build in Visual Studio 2008(Windows) and Linux. 
 I am very happy to share with you about the related things, I hope you can contribute your IDEAS about them. 
 Thanks a lot!
 
@@ -17,3 +17,8 @@ you should:
 3. It would be great if you comment the code you have written.
 
 Thanks again! Wish you join with me~
+
+Copyright (c) 2013, DaiyL.  All rights reserved.
+
+Use of this source code is governed by a BSD-style
+license that can be found in the License file.

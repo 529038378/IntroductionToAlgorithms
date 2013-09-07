@@ -1,5 +1,13 @@
 #include "Display.h"
 
+/**************************************************************
+**	File:			Display.h
+**	Description:	The implementation of the  Class Display
+**	Author:			Daiyl
+**	Date:			2013.8
+**************************************************************/
+
+
 void Display::Show()
 {
 	int nSelect;
@@ -39,7 +47,7 @@ Begin:
 	}
 }
 
-void Display::Welcome()
+void Display::Welcome()							//Show welcome page strings
 {
 	cout<<WELCOME_STRING<<endl;
 	cout<<"This is a Project about the Implement of Data Structs, Algorithms and Practical Issues."<<endl;
@@ -188,7 +196,7 @@ ShowWelcome:
 	return;
 }
 
-void Display::ClearScreen()
+void Display::ClearScreen()							//Clear screen by use of system()
 {
 #ifdef WIN32
 	system("cls");
