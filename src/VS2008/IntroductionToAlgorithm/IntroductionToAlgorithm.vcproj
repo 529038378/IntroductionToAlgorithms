@@ -203,6 +203,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MergeFindSet.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\RedBlackTree.cpp"
 				>
 			</File>
@@ -246,6 +250,10 @@
 			</File>
 			<File
 				RelativePath=".\ListStack.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MergeFindSet.h"
 				>
 			</File>
 			<File

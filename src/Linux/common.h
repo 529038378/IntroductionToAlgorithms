@@ -19,9 +19,10 @@ using namespace std;
 //Class type enum: data struct/algorithm/practical issue/interview issue
 enum CLASS_TYPE {OTHER = -1,DATA_STRUCT,ALGORITHM,PRACTICAL_ISSUE,INTERVIEW_ISSUE};
 
-#define DEFAULT_STACK_SIZE	10
-#define ERROR_EMPTY			255
-#define ERROR_FULL			254
+#define DEFAULT_STACK_SIZE				10
+#define ERROR_EMPTY						255
+#define ERROR_FULL						254
+#define DEFAULT_MERGESET_SIZE			100
 
 //Specification star strings
 #define ERROR_REPORT_STRING			"*************************Error Report**************************"

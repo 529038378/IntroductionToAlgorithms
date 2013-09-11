@@ -23,6 +23,8 @@
 #include "BinarySearchTree.cpp"
 #include "RedBlackTree.h"
 #include "RedBlackTree.cpp"
+#include "MergeFindSet.h"
+#include "MergeFindSet.cpp"
 
 class Display
 {
