@@ -18,7 +18,7 @@ ArrayStack<T>::ArrayStack(int nSize)
 	m_nTop = 0;
 	try
 	{
-		m_pArray = new int[nSize];
+		m_pArray = new T[nSize];
 	}
 	catch(...)
 	{

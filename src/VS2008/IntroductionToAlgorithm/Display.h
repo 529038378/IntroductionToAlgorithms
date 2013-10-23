@@ -25,6 +25,8 @@
 #include "RedBlackTree.cpp"
 #include "MergeFindSet.h"
 #include "MergeFindSet.cpp"
+#include "HashTable.h"
+#include "HashTable.cpp"
 
 class Display
 {

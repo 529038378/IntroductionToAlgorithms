@@ -9,6 +9,26 @@
 
 
 template <typename T>
+T* DataIO<T>::GetRandomData(const int nNumber)
+{
+	try
+	{
+		m_pData = new T[nNumber];							//Allocate the memory of the data
+	}
+	catch(...)
+	{
+		TRACE("new failure!");
+		return NULL;
+	}
+	SetDataByte(nNumber);
+	for(int i=0;i<nNumber;i++)
+	{
+		m_pData[i] = (T)rand();
+	}
+	return m_pData;
+}
+
+template <typename T>
 T* DataIO<T>::GetDataFromFile(const string strFileName,const int nEachRow)
 {
 	m_fInput.open(strFileName.c_str(),ios_base::in);				//Open the specified file

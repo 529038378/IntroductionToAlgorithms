@@ -68,6 +68,7 @@ void Display::ShowDataStructItems()
 	BinarySearchTree<int> bstBinarySearchTree;
 	RedBlackTree<int> rbtRedBlackTree;
 	MergeFindSet<int> mfsMergeFindSet;
+	HashTable<int> htHashTable;
 	cout<<WELCOME_STRING<<endl;
 	cout<<"This is the Implement of Data Structs"<<endl;
 	cout<<"Please Select the Item you are Interest in:"<<endl;
@@ -78,6 +79,7 @@ void Display::ShowDataStructItems()
 	cout<<"5.	Binary Search Tree"<<endl;
 	cout<<"6.	Red Black Tree"<<endl;
 	cout<<"7.	Merge Find Set"<<endl;
+	cout<<"8.	Hash Table"<<endl;
 	cout<<"98.	Up Layer;"<<endl;
 	cout<<"99.	Quit."<<endl;
 	cout<<STAR_STRING<<endl;
@@ -137,6 +139,12 @@ void Display::ShowDataStructItems()
 			cout<<mfsMergeFindSet.GetTitle().c_str()<<endl;
 			mfsMergeFindSet.Description();
 			mfsMergeFindSet.Test();
+			ShowDataStructItems();
+			break;
+		case 8:
+			cout<<htHashTable.GetTitle().c_str()<<endl;
+			htHashTable.Description();
+			htHashTable.Test();
 			ShowDataStructItems();
 			break;
 		case 98:

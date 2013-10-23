@@ -34,7 +34,7 @@ ArrayQueue<T>::ArrayQueue(int nSize)
 	m_nSize = nSize;
 	try
 	{
-		m_pArray = new int[nSize];
+		m_pArray = new T[nSize];
 	}
 	catch(...)
 	{

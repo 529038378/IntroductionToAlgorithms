@@ -195,6 +195,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\HashTable.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ia.cpp"
 				>
 			</File>
@@ -246,6 +250,10 @@
 			</File>
 			<File
 				RelativePath=".\Display.h"
+				>
+			</File>
+			<File
+				RelativePath=".\HashTable.h"
 				>
 			</File>
 			<File

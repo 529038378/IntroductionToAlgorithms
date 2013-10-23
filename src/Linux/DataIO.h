@@ -31,6 +31,7 @@ public:
 	unsigned int GetDataByte(void);
 	T* GetDataFromFile(string strFileName,const int nEachRow);			//Get data from specified file(you must set the parameter nEachRow which is stand for the number of the data in each row)
 	T* GetDataFromStdIO(const int nEachRow);							//Get data from standard IO
+	T* GetRandomData(const int nNumber);
 private:
 	void SetDataByte(unsigned int nDataByte);
 	ifstream m_fInput;
