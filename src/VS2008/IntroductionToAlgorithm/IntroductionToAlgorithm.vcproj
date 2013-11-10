@@ -214,6 +214,10 @@
 				RelativePath=".\RedBlackTree.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\SortAlgorithms.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Í·ÎÄ¼þ"
@@ -266,6 +270,10 @@
 			</File>
 			<File
 				RelativePath=".\RedBlackTree.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SortAlgorithms.h"
 				>
 			</File>
 		</Filter>

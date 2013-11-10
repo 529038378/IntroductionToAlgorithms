@@ -27,6 +27,8 @@
 #include "MergeFindSet.cpp"
 #include "HashTable.h"
 #include "HashTable.cpp"
+#include "SortAlgorithms.h"
+#include "SortAlgorithms.cpp"
 
 class Display
 {
@@ -38,6 +40,7 @@ public:
 private:
 	void Welcome();								//Show the welcome page
 	void ShowDataStructItems();
+	void ShowAllSortsItems();
 	void ShowAlgorithmAndPracticalIssuesItems();
 };
 

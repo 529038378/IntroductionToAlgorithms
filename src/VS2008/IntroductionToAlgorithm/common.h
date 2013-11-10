@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
+#include <time.h>
 using namespace std;
 
 //Class type enum: data struct/algorithm/practical issue/interview issue
@@ -38,6 +39,7 @@ enum CLASS_TYPE {OTHER = -1,DATA_STRUCT,ALGORITHM,PRACTICAL_ISSUE,INTERVIEW_ISSU
 	cerr<<"Error Message:	"<<fmt<<endl<<"In File->"<<__FILE__<<endl<<"Line->"<<__LINE__<<endl<<"Function->"<<__FUNCTION__<<endl; \
 	cerr<<ERROR_REPORT_END_STRING<<endl<<endl
 
+
 template <typename T>
 int DefaultCompare(T x,T y)
 {
@@ -56,5 +58,9 @@ int DefaultCompare(T x,T y)
 
 //Color enum used in the implementation of red black tree
 enum COLOR {RED = 0,BLACK = 1};
+
+//Sorts enum used in the implementation of sort algorithms
+enum SORT {SELECTION_SORT = 1,INSERTION_SORT,QUICK_SORT,MERGE_SORT,HEAP_SORT,RADIX_SORT_LSD,RADIX_SORT_MSD,	\
+			SHELL_SORT,BUBBLE_SORT,COCKTAIL_SHAKER_SORT,GNOME_SORT,BITONIC_SORT,ODD_EVEN_SORT,COUNTING_SORT};
 
 #endif

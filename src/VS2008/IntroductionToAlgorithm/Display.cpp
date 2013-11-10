@@ -31,6 +31,8 @@ Begin:
 			ShowDataStructItems();
 			break;
 		case 2:
+			ShowAllSortsItems();
+		case 3:
 			ShowAlgorithmAndPracticalIssuesItems();
 			break;
 		case 99:
@@ -53,7 +55,8 @@ void Display::Welcome()							//Show welcome page strings
 	cout<<"This is a Project about the Implement of Data Structs, Algorithms and Practical Issues."<<endl;
 	cout<<"Please Select the Item you are Interest in:"<<endl;
 	cout<<"1.	Data Structs;"<<endl;
-	cout<<"2.	Algorithms and Practical Issues;"<<endl;
+	cout<<"2.	All kinds of sorts;"<<endl;
+	cout<<"3.	Algorithms and Practical Issues;"<<endl;
 	cout<<"99.	Quit."<<endl;
 	cout<<STAR_STRING<<endl;
 	cout<<endl<<endl;
@@ -211,6 +214,165 @@ ShowWelcome:
 	Show();
 	return;
 }
+
+void Display::ShowAllSortsItems()
+{
+	SortAlgorithms<int> saSortAlgorithms;
+	Begin:
+	cout<<WELCOME_STRING<<endl;
+	cout<<"This is the Implement of Algorithms and Practical Issues."<<endl;
+	cout<<"Please Select the Item you are Interest in:"<<endl;
+	cout<<"1.	Selection Sort;"<<endl;
+	cout<<"2.	Insertion Sort;"<<endl;
+	cout<<"3.	Quick Sort;"<<endl;
+	cout<<"4.	Merge Sort;"<<endl;
+	cout<<"5.	Heap Sort;"<<endl;
+	cout<<"6.	Radix Sort(LSD);"<<endl;
+	cout<<"7.	Radix Sort(MSD);"<<endl;
+	cout<<"8.	Shell Sort;"<<endl;
+	cout<<"9.	Bubble Sort;"<<endl;
+	cout<<"10.	Cocktail Shaker Sort;"<<endl;
+	cout<<"11.	Gnome Sort;"<<endl;
+	cout<<"12.	Bitonic Sort;"<<endl;
+	cout<<"13.	Odd Even Sort;"<<endl;
+	cout<<"14.	Counting Sort;"<<endl;
+	cout<<"98.	Up Layer;"<<endl;
+	cout<<"99.	Quit."<<endl;
+	cout<<STAR_STRING<<endl;
+	cout<<endl;
+	int nSelect;
+	while(1)
+	{
+		cin>>nSelect;
+		if(cin.fail())
+		{
+			ClearScreen();
+			cout<<"Input Error! Please Select Again!"<<endl;
+			cin.clear();
+			cin.sync();
+			goto Begin;
+		}
+		ClearScreen();
+		switch(nSelect)
+		{
+		case 1:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(SELECTION_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 2:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(INSERTION_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 3:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(QUICK_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 4:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(MERGE_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 5:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(HEAP_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 6:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(RADIX_SORT_LSD);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 7:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(RADIX_SORT_MSD);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 8:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(SHELL_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 9:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(BUBBLE_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 10:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(COCKTAIL_SHAKER_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 11:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(GNOME_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+		break;
+		case 12:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(BITONIC_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 13:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(ODD_EVEN_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 14:
+			cout<<saSortAlgorithms.GetTitle().c_str()<<endl;
+			saSortAlgorithms.Description();
+			saSortAlgorithms.SetSortType(COUNTING_SORT);
+			saSortAlgorithms.Test();
+			ShowAllSortsItems();
+			break;
+		case 98:
+			goto ShowWelcome;
+			break;
+		case 99:
+			exit(0);
+			break;
+		default:
+			ClearScreen();
+			cout<<"Select Not Available! Please Select Again!"<<endl;
+			cin.clear();
+			cin.sync();
+			goto Begin;
+			break;
+		}
+	}
+ShowWelcome:
+	Show();
+	return;
+}
+
 
 void Display::ClearScreen()							//Clear screen by use of system()
 {

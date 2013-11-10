@@ -25,7 +25,7 @@ public:
 	bool Delete(T nData);						//Delete data from hash table
 	int Search(T nData);						//Search data in hash table
 	int UniversalHashingFunction(int nKey,int a,int b,int p,int m);		//h(k) = ((ak+b)mod p)mod m
-	int DualHashingFunction(int nKey,int nI);
+	int DualHashingFunction(int nKey,int nI);	//h(k,i) = (h1(k) + i*h2(k)) mod m
 private:
 	int GetTableSize() const;
 	T** m_ppArray;								//Hash table array

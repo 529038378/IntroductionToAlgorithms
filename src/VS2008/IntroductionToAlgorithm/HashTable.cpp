@@ -332,11 +332,11 @@ int HashTable<T>::UniversalHashingFunction(int nKey,int a,int b,int p,int m)		//
 	return (((a * nKey + b) % p) % m);
 }
 
-//dual hashing function
+//dual hashing function	h1(k) = k mod m1 and h2(k) = 1 + (k mod m2)
 template <typename T>
 int HashTable<T>::DualHashingFunction(int nKey,int nI)
 {
-	return (((nKey % m_m1) + nI * (nKey % m_m2)) % m_m1);
+	return (((nKey % m_m1) + nI * (1 +(nKey % m_m2))) % m_m1);
 }
 
 template <typename T>

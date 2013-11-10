@@ -21,6 +21,7 @@ T* DataIO<T>::GetRandomData(const int nNumber)
 		return NULL;
 	}
 	SetDataByte(nNumber);
+	srand( (unsigned)time(NULL));
 	for(int i=0;i<nNumber;i++)
 	{
 		m_pData[i] = (T)rand();
